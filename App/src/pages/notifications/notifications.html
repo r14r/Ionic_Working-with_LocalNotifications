@@ -1,0 +1,80 @@
+<ion-header>
+	<ion-navbar>
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+
+		<ion-title>Notifications</ion-title>
+
+		<ion-buttons end>
+			<button ion-button icon-only>
+				<ion-icon name="refresh"></ion-icon>
+			</button>
+		</ion-buttons>
+	</ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+	<ion-card *ngIf="timer">
+		<ion-card-header>
+			<button ion-button large block clear class="timer-button x-large">{{timer.displayTime}}</button>
+
+			<button ion-button clear class="large" (click)="stopTimer()" item-start>
+				<ion-icon name="refresh"></ion-icon>
+			</button>
+			<button ion-button clear class="large" (click)="startTimer()" item-end>
+				<ion-icon name="play"></ion-icon>
+			</button>
+		</ion-card-header>
+	</ion-card>
+
+
+	<ion-grid>
+		<ion-row>
+			<ion-col col-4>Basic</ion-col>
+			<ion-col>
+				<ion-select [(ngModel)]="repeatevery_intervall" interface="popover">
+					<ion-option value="-">-</ion-option>
+				</ion-select>
+			</ion-col>
+			<ion-col col-2><ion-toggle [(ngModel)]="basic_enabled"></ion-toggle></ion-col>
+			<ion-col col-2><button ion-button item-end outline (click)="scheduleBasic()">Los</button></ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col col-4>Repeat every</ion-col>
+			<ion-col>
+				<ion-select [(ngModel)]="repeatevery_intervall" interface="popover">
+					<ion-option value="1">1</ion-option>
+					<ion-option value="2">2</ion-option>
+					<ion-option value="5">5</ion-option>
+					<ion-option value="10">10</ion-option>
+					<ion-option value="30">30</ion-option>
+					<ion-option value="60">60</ion-option>
+				</ion-select>
+			</ion-col>
+			<ion-col col-2>
+				<ion-toggle [(ngModel)]="repeatevery_enabled" (change)="toggleChanged('repeat')"></ion-toggle>
+			</ion-col>
+			<ion-col col-2><button ion-button item-end outline (click)="scheduleRepeating1()">Los</button></ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col col-4>From now</ion-col>
+			<ion-col>
+				<ion-select [(ngModel)]="fromnow_intervall" interface="popover">
+					<ion-option value="1">1</ion-option>
+					<ion-option value="2">2</ion-option>
+					<ion-option value="5">5</ion-option>
+					<ion-option value="10">10</ion-option>
+					<ion-option value="30">30</ion-option>
+					<ion-option value="60">60</ion-option>
+				</ion-select>
+			</ion-col>
+			<ion-col col-2><ion-toggle [(ngModel)]="fromnow_enabled"></ion-toggle></ion-col>
+			<ion-col col-2>
+				<button ion-button item-end outline (click)="scheduleFromNow()">Los</button>
+			</ion-col>
+			</ion-row>		
+	</ion-grid>
+</ion-content>

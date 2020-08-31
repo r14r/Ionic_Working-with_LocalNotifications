@@ -1,0 +1,8 @@
+{
+	"name": "awake",
+	"app_id": "awake",
+	"type": "ionic-angular",
+	"integrations": {
+		"cordova": {}
+	}
+}
